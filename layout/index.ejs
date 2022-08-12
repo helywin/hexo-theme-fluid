@@ -43,6 +43,14 @@ page.banner_mask_alpha = theme.index.banner_mask_alpha
             </time>
           </div>
         <% } %>
+        <% if (theme.post.updated.enable && theme.post.updated && compare_date(post.date, post.updated)) { %>
+            <div class="post-meta mr-3">
+                <i class="iconfont icon-history"></i>
+                <time datetime="<%= full_date(post.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
+                    <%- relative_date(post.updated, theme.post.updated.date_format) %>
+                </time>
+            </div>
+        <% } %>
         <% if (theme.index.post_meta.category && post.categories.length > 0) { %>
           <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
